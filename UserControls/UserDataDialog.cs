@@ -68,5 +68,11 @@ namespace Rezervace
                 DialogResult = DialogResult.OK;
             }
         }
+
+        private void ChangePasswordBttn_Click(object sender, EventArgs e)
+        {
+            UserControls.ChangePassword changePassword = new();
+            changePassword.ShowDialog();
+        }
     }
 }

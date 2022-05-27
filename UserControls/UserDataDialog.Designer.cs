@@ -41,6 +41,7 @@
             this.ConfirmBttn = new Rezervace.CustomControls.CustomButton();
             this.DoB = new Rezervace.CustomControls.CustomDatePicker();
             this.label5 = new System.Windows.Forms.Label();
+            this.ChangePasswordBttn = new Rezervace.CustomControls.CustomButton();
             this.SuspendLayout();
             // 
             // RealName
@@ -199,7 +200,7 @@
             this.BackBttn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BackBttn.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BackBttn.ForeColor = System.Drawing.Color.White;
-            this.BackBttn.Location = new System.Drawing.Point(85, 503);
+            this.BackBttn.Location = new System.Drawing.Point(18, 503);
             this.BackBttn.Name = "BackBttn";
             this.BackBttn.Size = new System.Drawing.Size(150, 40);
             this.BackBttn.TabIndex = 12;
@@ -218,7 +219,7 @@
             this.ConfirmBttn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConfirmBttn.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ConfirmBttn.ForeColor = System.Drawing.Color.White;
-            this.ConfirmBttn.Location = new System.Drawing.Point(274, 503);
+            this.ConfirmBttn.Location = new System.Drawing.Point(361, 503);
             this.ConfirmBttn.Name = "ConfirmBttn";
             this.ConfirmBttn.Size = new System.Drawing.Size(150, 40);
             this.ConfirmBttn.TabIndex = 11;
@@ -251,12 +252,33 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Date of Birth";
             // 
+            // ChangePasswordBttn
+            // 
+            this.ChangePasswordBttn.BackColor = System.Drawing.Color.Gold;
+            this.ChangePasswordBttn.BackgroundColor = System.Drawing.Color.Gold;
+            this.ChangePasswordBttn.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.ChangePasswordBttn.BorderRadius = 20;
+            this.ChangePasswordBttn.BorderSize = 0;
+            this.ChangePasswordBttn.FlatAppearance.BorderSize = 0;
+            this.ChangePasswordBttn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangePasswordBttn.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ChangePasswordBttn.ForeColor = System.Drawing.Color.White;
+            this.ChangePasswordBttn.Location = new System.Drawing.Point(189, 503);
+            this.ChangePasswordBttn.Name = "ChangePasswordBttn";
+            this.ChangePasswordBttn.Size = new System.Drawing.Size(150, 40);
+            this.ChangePasswordBttn.TabIndex = 13;
+            this.ChangePasswordBttn.Text = "Chage Password";
+            this.ChangePasswordBttn.TextColor = System.Drawing.Color.White;
+            this.ChangePasswordBttn.UseVisualStyleBackColor = false;
+            this.ChangePasswordBttn.Click += new System.EventHandler(this.ChangePasswordBttn_Click);
+            // 
             // UserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(523, 591);
+            this.Controls.Add(this.ChangePasswordBttn);
             this.Controls.Add(this.BackBttn);
             this.Controls.Add(this.ConfirmBttn);
             this.Controls.Add(this.label6);
@@ -292,5 +314,6 @@
         private CustomControls.CustomButton ConfirmBttn;
         private CustomControls.CustomDatePicker DoB;
         private Label label5;
+        private CustomControls.CustomButton ChangePasswordBttn;
     }
 }
