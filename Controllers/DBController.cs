@@ -176,6 +176,20 @@ namespace Rezervace
             }
         }
 
+        public async Task<bool> changePassword(string username, string passwordHash)
+        {
+            string command = String.Format(@"UPDATE user_credentials SET password_hash='{0}' WHERE username='{1}'", passwordHash, username);
+            try
+            {
+                await using var cmd = new NpgsqlCommand(command, conn);
+                return cmd.ExecuteNonQuery() == 1;
+            } catch (Exception)
+            {
+                MessageBox.Show("DB error");
+                return false;
+            }
+        }
+
         public async Task<List<VehicleDTO>> GetVehicles(FilterDTO? filter)
         {
             string command = @"SELECT * FROM vehicles ";
@@ -279,7 +293,7 @@ namespace Rezervace
 
         public async Task<List<ReservationDetailsDTO>?> ListReservations(string Username, bool displayAll)
         {
-            string command = String.Format(@"SELECT reservation_id, brand, model, fuel_type, date_from, date_to, price_per_day FROM reservations l LEFT JOIN vehicles r ON (l.vehicle_id = r.id)");
+            string command = String.Format(@"SELECT reservation_id, username, brand, model, fuel_type, date_from, date_to, price_per_day FROM reservations l LEFT JOIN vehicles r ON (l.vehicle_id = r.id)");
             if (!displayAll)
             {
                 command += String.Format("WHERE Username = '{0}'", Username);
@@ -290,7 +304,7 @@ namespace Rezervace
             NpgsqlDataReader? reader = null;
             try
             {
-                object[] values = new object[7];
+                object[] values = new object[8];
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -318,12 +332,13 @@ namespace Rezervace
         {
             ReservationDetailsDTO dto = new();
             dto.Id = (int)obj[0];
-            dto.Brand = (string)obj[1];
-            dto.Model = (string)obj[2];
-            dto.Type = (FuelType)obj[3];
-            dto.FromDate = (DateTime)obj[4];
-            dto.ToDate = (DateTime)obj[5];
-            dto.PricePerDay = Decimal.ToInt32((decimal)obj[6]);
+            dto.Username = (string)obj[1];
+            dto.Brand = (string)obj[2];
+            dto.Model = (string)obj[3];
+            dto.Type = (FuelType)obj[4];
+            dto.FromDate = (DateTime)obj[5];
+            dto.ToDate = (DateTime)obj[6];
+            dto.PricePerDay = Decimal.ToInt32((decimal)obj[7]);
 
             return dto;
         }

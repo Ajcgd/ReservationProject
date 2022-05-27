@@ -13,19 +13,21 @@ namespace Rezervace
     public partial class ReservationsDisplay : Form
     {
         readonly List<ReservationDetailsDTO> ReservationDTOs;
-        private ReservationsDisplay(List<ReservationDetailsDTO> ReservationDTOs)
+        readonly bool ListAll;
+        private ReservationsDisplay(List<ReservationDetailsDTO> ReservationDTOs, bool listAll)
         {
             this.ReservationDTOs = ReservationDTOs;
+            ListAll = listAll;
             InitializeComponent();
             DataGridView1.DataSource = ReservationDTOs;
         }
 
-        public static ReservationsDisplay? GetInstance()
+        public static ReservationsDisplay? GetInstance(bool listAll = false)
         {
             List<ReservationDetailsDTO>? ReservationDTOs;
-            if ((ReservationDTOs = Controller.Conn.ListReservations(MainForm.Username, false).Result) != null)
+            if ((ReservationDTOs = Controller.Conn.ListReservations(MainForm.Username, listAll).Result) != null)
             {
-                return new ReservationsDisplay(ReservationDTOs);
+                return new ReservationsDisplay(ReservationDTOs, listAll);
             } else
             {
                 return null;
@@ -36,6 +38,10 @@ namespace Rezervace
         private void DisplayReservations(object sender, EventArgs e)
         {
             DataGridView1.DataSource = ReservationDTOs;
+            DataGridView1.Columns["Id"].HeaderText = "ID";
+            DataGridView1.Columns["Id"].Visible = ListAll;
+            DataGridView1.Columns["Username"].HeaderText = "Username";
+            DataGridView1.Columns["Username"].Visible = ListAll;
             DataGridView1.Columns["Brand"].HeaderText = "Brand";
             DataGridView1.Columns["Model"].HeaderText = "Model";
             DataGridView1.Columns["type"].HeaderText = "Fuel Type";

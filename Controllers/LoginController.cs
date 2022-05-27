@@ -24,7 +24,7 @@ namespace Rezervace
         }
 
 
-        private static string ComputeHash(string toHash)
+        public static string ComputeHash(string toHash)
         {
             byte[] hash;
 

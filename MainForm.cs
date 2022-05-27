@@ -32,6 +32,7 @@ namespace Rezervace
 
             InitializeComponent();
             UsernameLabel.Text = Username;
+            SystemControl.Visible = isAdmin;
         }
 
         public static MainForm? GetInstance(string Username, bool isAdmin, DBController conn)
@@ -108,6 +109,14 @@ namespace Rezervace
             {
                 MessageBox.Show("Error occured please repeat the action");
             }
+        }
+
+        private void AdminControls_Click(object sender, EventArgs e)
+        {
+            AdminControls.AdminControlPanel adminControlPanel = new();
+            Hide();
+            adminControlPanel.ShowDialog();
+            Show();
         }
     }
 }

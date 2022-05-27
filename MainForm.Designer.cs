@@ -37,6 +37,7 @@
             this.DisplayReservationsBttn = new Rezervace.CustomControls.CustomButton();
             this.DisplayVehiclesBttn = new Rezervace.CustomControls.CustomButton();
             this.CreateReservationBttn = new Rezervace.CustomControls.CustomButton();
+            this.SystemControl = new Rezervace.CustomControls.CustomButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExitIcon)).BeginInit();
             this.SuspendLayout();
@@ -183,12 +184,33 @@
             this.CreateReservationBttn.UseVisualStyleBackColor = false;
             this.CreateReservationBttn.Click += new System.EventHandler(this.CreateReservationBttn_Click);
             // 
+            // SystemControl
+            // 
+            this.SystemControl.BackColor = System.Drawing.Color.Crimson;
+            this.SystemControl.BackgroundColor = System.Drawing.Color.Crimson;
+            this.SystemControl.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.SystemControl.BorderRadius = 10;
+            this.SystemControl.BorderSize = 0;
+            this.SystemControl.FlatAppearance.BorderSize = 0;
+            this.SystemControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SystemControl.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SystemControl.ForeColor = System.Drawing.Color.White;
+            this.SystemControl.Location = new System.Drawing.Point(91, 7);
+            this.SystemControl.Name = "SystemControl";
+            this.SystemControl.Size = new System.Drawing.Size(239, 40);
+            this.SystemControl.TabIndex = 14;
+            this.SystemControl.Text = "System Control";
+            this.SystemControl.TextColor = System.Drawing.Color.White;
+            this.SystemControl.UseVisualStyleBackColor = false;
+            this.SystemControl.Click += new System.EventHandler(this.AdminControls_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SystemControl);
             this.Controls.Add(this.CreateReservationBttn);
             this.Controls.Add(this.DisplayVehiclesBttn);
             this.Controls.Add(this.DisplayReservationsBttn);
@@ -215,5 +237,6 @@
         private CustomControls.CustomButton DisplayReservationsBttn;
         private CustomControls.CustomButton DisplayVehiclesBttn;
         private CustomControls.CustomButton CreateReservationBttn;
+        private CustomControls.CustomButton SystemControl;
     }
 }
